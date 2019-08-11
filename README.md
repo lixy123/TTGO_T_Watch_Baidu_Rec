@@ -1,10 +1,12 @@
 
 
    
-一.程序功能： 声音监听器。监听周围的声音，并识别成文字。
+一.程序功能： 
+
+1.声音监听器。监听周围的声音，并识别成文字。
           识别的文字转发到其它设备，如树莓派，每段录音最长10秒,平均一段录音的文字识别时间3-25秒，取决于网络速度
 
-硬件：    TTGO_T_Watch 主板自带有8M PSRAM, 扩展板有多种，有一种扩展板集成了INMP441 I2S 麦克风录入芯片, 可以处理语音.
+2.硬件：    TTGO_T_Watch 主板自带有8M PSRAM, 扩展板有多种，有一种扩展板集成了INMP441 I2S 麦克风录入芯片, 可以处理语音.
 
          源码硬件资料: https:github.com/LilyGO/TTGO-T-Watch
          
@@ -49,7 +51,7 @@
     
   3. 安装：把raspberry目录中的两个py代码拷入树莓派
   
-  4. 配置：ttgo_tulin.py   需要在http:www.turingapi.com/ 上注册获取账号，写入变量tuling_key，账号必须身份证认证后才可用
+  4. 配置：ttgo_tulin.py   需要在http://www.turingapi.com 上注册获取账号，写入变量tuling_key，账号必须身份证认证后才可用
   
   5. 运行：python ttgo_watch_server.py 1990 
   
