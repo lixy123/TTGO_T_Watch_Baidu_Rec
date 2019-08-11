@@ -72,7 +72,7 @@
     
   2.运行：上电即运行
 
-   <img src= 'https://github.com/lixy123/TTGO_T_Watch_Baidu_Rec/blob/master/IMG_20190811_135934.jpg' />
+   <img src= 'https://github.com/lixy123/TTGO_T_Watch_Baidu_Rec/blob/master/IMG_20190811_1359341.jpg' />
 
 演示视频地址
    https://github.com/lixy123/TTGO_T_Watch_Baidu_Rec/blob/master/VID_20190811.avi
