@@ -875,7 +875,7 @@ bool CloudSpeechClient::savemp3(long file_size)
   return (true);
 }
 
-
+/*
 bool CloudSpeechClient::savejpg(long file_size)
 {
 
@@ -1001,6 +1001,7 @@ String CloudSpeechClient::get_jpg(String host, int port, String url)
   client.stop();
   return ("succ");
 }
+*/
 //文字转语音
 String CloudSpeechClient::getVoice(String audio_text)
 {
@@ -1195,4 +1196,112 @@ String CloudSpeechClient::posturl(String host, int port, String url)
   Serial.println("用时:" + String( millis() / 1000 - starttime) + "秒");
 #endif
   return (retstr);
+}
+
+
+String CloudSpeechClient::Find_tulintext(String line)
+{
+  const char* p_result;
+  int code_msg = 0;
+  String result_msg = "";
+  //Serial.println(">" + line);
+  if ( line.indexOf("\"code\":") > 0  && line.indexOf("\"text\":") > 0)
+  {
+    StaticJsonBuffer<512> jsonBuffer;
+    JsonObject& root = jsonBuffer.parseObject(line);
+    code_msg  =  root["code"];
+    if (code_msg == 100000)
+    {
+      p_result = root["text"];
+      result_msg = String(p_result );
+    }
+  }
+  return (result_msg);
+}
+
+
+String CloudSpeechClient::tulin(String msg)
+{
+  if (!client.connect("www.tuling123.com", 80)) {
+    Serial.println("connection failed");
+    return ("");
+  }
+
+  msg = urldecode(msg);
+#ifdef SHOW_DEBUG
+  Serial.println(msg);
+#endif
+  //以下信息通过 Fiddler 工具分析协议，Raw部分获得
+  String url = "http://www.tuling123.com/openapi/api";
+  String HttpBody1 = String("") + "{\"key\":\"" + tulin_key + "\", \"info\":\"" + msg + "\",\"userid\":\"python_test\"}";
+
+  String  HttpHeader = String("POST ") + String(url) +   " HTTP/1.1\r\n" +
+                       "Host: www.tuling123.com\r\n" +
+                       "Content-Type: application/json\r\n" +
+                       "content-length: " + String(HttpBody1.length()) +  "\r\n" +
+                       "Connection: keep-alive" + "\r\n\r\n";
+#ifdef SHOW_DEBUG
+  Serial.println(HttpHeader);
+  Serial.println(HttpBody1);
+#endif
+  client.print(HttpHeader);
+  client.print(HttpBody1);
+
+  String retstr = "";
+  String line = "";
+  uint32_t starttime = 0;
+  uint32_t stoptime = 0;
+  bool http_ok = false;
+  bool head_ok = false;
+  starttime = millis() / 1000;
+
+  while (!client.available())
+  {
+    stoptime = millis() / 1000;
+    if (stoptime - starttime >= 5)
+    {
+#ifdef SHOW_DEBUG
+      Serial.println("timeout >5s");
+#endif
+      return "";
+    }
+  }
+
+
+  while (client.available())
+  {
+    line = client.readStringUntil('\n');
+
+    if (head_ok)
+    {
+      if (http_ok)
+      {
+        line = client.readStringUntil('\n');
+        retstr = line;
+      }
+      break;
+    }
+    if (line.startsWith("HTTP/1.1"))
+    {
+#ifdef SHOW_DEBUG
+      Serial.println(">" + line);
+#endif
+      if (line.startsWith("HTTP/1.1 200 OK"))
+        http_ok = true;
+      //line不含'\n'
+      //Serial.println(String("HTTP/1.1 200 OK").length());
+      // Serial.println(line.length());
+    }
+
+    if (line.length() == 1 && line.startsWith("\r"))
+    {
+      head_ok = true;
+      //Serial.println(">end");
+    }
+    //Serial.println(line);
+  }
+  delay(10);
+  client.stop();
+
+  return (Find_tulintext(retstr));
 }
