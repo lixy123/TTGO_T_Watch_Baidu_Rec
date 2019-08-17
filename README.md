@@ -11,11 +11,16 @@
          源码硬件资料: https:github.com/LilyGO/TTGO-T-Watch         
          介绍指南:    https:t-watch-document-en.readthedocs.io/en/latest/index.html         
          玩家介绍:   https:www.instructables.com/id/TTGO-T-Watch/
-         
- INMP441与ESP32接线定义见I2S.h (TTGO_T_Watch) 
+
+
+ INMP441与ESP32接线定义见I2S.h
+ 
  SCK IO15 
+ 
  WS  IO13 
+ 
  SD  IO14 
+ 
  L/R GND 
 
 二.ESP32编译环境:
