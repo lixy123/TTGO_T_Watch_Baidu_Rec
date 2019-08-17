@@ -34,11 +34,10 @@
       10倍速sd卡速度虽然可以达到，但检测静音期间SD卡需要反复写入，容易写废      
     5.Arduino选择正确端口号后开始烧写固件
     
-    已提供编译好的固件：    
-    烧写方法和此地址的方法类似： https://t-watch-document-en.readthedocs.io/en/latest/get-started/index.html    
+    已提供编译好的固件：           
     1.下载固件:
     https://github.com/lixy123/TTGO_T_Watch_Baidu_Rec/releases
-    2.解压后共4个文件，按图设置好参数，特别是4个文件的烧写地址
+    2.解压后共4个文件，readme中有烧写软件的下载地址，下载执行后按图设置好参数，特别是4个文件的烧写地址
     3.点击START
  
 三.树莓派服务端python代码
