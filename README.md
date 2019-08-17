@@ -34,7 +34,7 @@
       10倍速sd卡速度虽然可以达到，但检测静音期间SD卡需要反复写入，容易写废      
     5.Arduino选择正确端口号后开始烧写固件.    
     已提供编译好的固件：    
-    烧写方法参考：https://t-watch-document-en.readthedocs.io/en/latest/get-started/index.html    
+    烧写方法参考： https://t-watch-document-en.readthedocs.io/en/latest/get-started/index.html    
     0.1版本固件:    
     https://github.com/lixy123/TTGO_T_Watch_Baidu_Rec/releases
  
@@ -48,7 +48,8 @@
 
 四 .使用说明：
 
-  1.配置: TTGO T-WATCH 开机运行，首次运行时初始化内置参数,自动进入路由器模式,创建一个ESP32SETUP的路由器，电脑连接,输入http://192.168.4.1进行配置
+  1.配置: TTGO T-WATCH 开机运行，首次运行时初始化内置参数,自动进入路由器模式,创建一个ESP32SETUP的路由器，电脑连接,
+    输入 http://192.168.4.1 进行配置
    
     A.esp32连接的路由器和密码    
     B.百度语音的账号,和校验码
