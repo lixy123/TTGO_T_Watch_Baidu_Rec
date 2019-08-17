@@ -27,25 +27,17 @@
 
 二.ESP32编译环境:
 
-    1.Arduino 1.8.9
-    
-    2.扩展板引用地址配置成: https:dl.espressif.com/dl/package_esp32_dev_index.json
-    
-    3.安装： 安装esp32的官方开发包 esp32 by Espressif Systems 版本 1.03-rc1
-    
+    1.Arduino 1.8.9    
+    2.扩展板引用地址配置成: https:dl.espressif.com/dl/package_esp32_dev_index.json    
+    3.安装： 安装esp32的官方开发包 esp32 by Espressif Systems 版本 1.03-rc1    
     4.开发板选择: TTGO T-WATCH, PSRAM选择Enabled
       esp32只有512K内存，保存不了20秒的声音文件，在声音识别前必须存到一处地方，最合适的是用PSRAM.
       SPIFFS写入速度不够快, 达不到边录音边存效果，失音严重
-      10倍速sd卡速度虽然可以达到，但检测静音期间SD卡需要反复写入，容易写废
-      
-    5.Arduino选择正确端口号后开始烧写固件.
-    
-    已提供编译好的固件：
-    
-    烧写方法参考：https://t-watch-document-en.readthedocs.io/en/latest/get-started/index.html
-    
-    0.1版本固件:
-    
+      10倍速sd卡速度虽然可以达到，但检测静音期间SD卡需要反复写入，容易写废      
+    5.Arduino选择正确端口号后开始烧写固件.    
+    已提供编译好的固件：    
+    烧写方法参考：https://t-watch-document-en.readthedocs.io/en/latest/get-started/index.html    
+    0.1版本固件:    
     https://github.com/lixy123/TTGO_T_Watch_Baidu_Rec/releases
  
 三.树莓派服务端python代码
