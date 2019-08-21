@@ -13,21 +13,16 @@
          玩家介绍:   https:www.instructables.com/id/TTGO-T-Watch/
 
 
- INMP441与ESP32接线定义见I2S.h
- 
- SCK IO15 
- 
- WS  IO13 
- 
- SD  IO14 
- 
- L/R GND 
-
 二.ESP32编译环境:
 
     1.Arduino 1.8.9    
     2.扩展板引用地址配置成: https:dl.espressif.com/dl/package_esp32_dev_index.json    
     3.安装： 安装esp32的官方开发包 esp32 by Espressif Systems 版本 1.03-rc1    
+             引用库<br/>
+             <ul>
+             <li><a href="https://github.com/lewisxhe/TFT_eSPI">TFT_eSPI</a></li>
+             <li><a href="https://github.com/lewisxhe/lvgl">lvgl</a></li>
+             <ul/>
     4.开发板选择: TTGO T-WATCH, PSRAM选择Enabled
       esp32只有512K内存，保存不了20秒的声音文件，在声音识别前必须存到一处地方，最合适的是用PSRAM.
       SPIFFS写入速度不够快, 达不到边录音边存效果，失音严重
